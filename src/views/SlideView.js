@@ -11,7 +11,12 @@ define(function(require, exports, module) {
 
         View.apply(this, arguments);
         this.rootModifier = new StateModifier({
-          size: [400, 450]
+          /*
+           * options is set based on any options passed
+           * during instantiation and DEFAULT_OPTIONS
+           * declared on this Type.
+           */
+          size: this.options.size
         })
 
         // Save reference to this node.
@@ -25,7 +30,9 @@ define(function(require, exports, module) {
     SlideView.prototype = Object.create(View.prototype);
     SlideView.prototype.constructor = SlideView;
 
-    SlideView.DEFAULT_OPTIONS = {};
+    SlideView.DEFAULT_OPTIONS = {
+      size: [400, 450]
+    };
 
     // helper function used to create background surface
     function _createBackground(){
