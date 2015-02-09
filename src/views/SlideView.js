@@ -17,6 +17,18 @@ define(function(require, exports, module) {
         // Save reference to this node.
         this.mainNode = this.add(this.rootModifier)
 
+        // preserve the correct context when executing _createBackground
+        _createBackground.call(this)
+
+    }
+
+    SlideView.prototype = Object.create(View.prototype);
+    SlideView.prototype.constructor = SlideView;
+
+    SlideView.DEFAULT_OPTIONS = {};
+
+    // helper function used to create background surface
+    function _createBackground(){
         var backgroundSurface = new Surface({
           properties: {
             // The size of this surface will be inherited
@@ -27,11 +39,6 @@ define(function(require, exports, module) {
         })
         this.mainNode.add(backgroundSurface)
     }
-
-    SlideView.prototype = Object.create(View.prototype);
-    SlideView.prototype.constructor = SlideView;
-
-    SlideView.DEFAULT_OPTIONS = {};
 
     module.exports = SlideView;
 });
