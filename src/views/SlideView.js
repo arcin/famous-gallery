@@ -10,6 +10,22 @@ define(function(require, exports, module) {
     function SlideView() {
 
         View.apply(this, arguments);
+        this.rootModifier = new StateModifier({
+          size: [400, 450]
+        })
+
+        // Save reference to this node.
+        this.mainNode = this.add(this.rootModifier)
+
+        var backgroundSurface = new Surface({
+          properties: {
+            // The size of this surface will be inherited
+            // from a parent modifier
+            backgroundColor: '#FFFFF5',
+            boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.5)'
+          }
+        })
+        this.mainNode.add(backgroundSurface)
     }
 
     SlideView.prototype = Object.create(View.prototype);

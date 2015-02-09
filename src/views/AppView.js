@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 
         // Instantiate and mount slideshowView
         var slideshowView = new SlideshowView()
-        this.addslideshowView
+        this.add(slideshowView)
     }
 
     AppView.prototype = Object.create(View.prototype)
