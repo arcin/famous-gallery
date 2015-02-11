@@ -14,14 +14,9 @@ define(function(require, exports, module) {
 
         View.apply(this, arguments)
 
-        // Instantiate and mount slideshowView
-        var slideshowView = new SlideshowView({
-          urls: this.options.urls
-        })
-
-        this.add(slideshowView)
 
         _createCamera.call(this)
+        _createSlideshow.call(this)
     }
 
     AppView.prototype = Object.create(View.prototype)
@@ -31,6 +26,10 @@ define(function(require, exports, module) {
       urls: undefined,
       cameraWidth: 0.6 * window.innerHeight
     }
+
+    AppView.DEFAULT_OPTIONS.slideWidth = 0.8 * AppView.DEFAULT_OPTIONS.cameraWidth
+    AppView.DEFAULT_OPTIONS.slideHeight = AppView.DEFAULT_OPTIONS.slideWidth + 40
+    AppView.DEFAULT_OPTIONS.slidePosition = 0.33 * AppView.DEFAULT_OPTIONS.cameraWidth
 
     function _createCamera(){
       var camera = new ImageSurface({
@@ -48,6 +47,25 @@ define(function(require, exports, module) {
       })
 
       this.add(cameraModifier).add(camera)
+    }
+
+    function _createSlideshow(){
+      // Instantiate and mount slideshowView
+      var slideshowView = new SlideshowView({
+        size: [this.options.slideWidth, this.options.slideHeight],
+        urls: this.options.urls
+      })
+
+
+      var slideshowModifier = new StateModifier({
+        origin: [0.5, 0],
+        align: [0.5, 0],
+        transform: Transform.translate(
+          -(this.options.slideWidth/2), this.options.slidePosition, 0
+        )
+      })
+
+      this.add(slideshowModifier).add(slideshowView)
     }
 
     module.exports = AppView
