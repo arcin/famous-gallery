@@ -37,6 +37,12 @@ define(function(require, exports, module) {
       var slide = this.slides[this.currentIndex]
       this.lightbox.show(slide)
     }
+    SlideshowView.prototype.showNextSlide = function(){
+      this.currentIndex++
+      // cycles slides endlessly
+      if (this.currentIndex === this.slides.length) this.currentIndex = 0
+      this.showCurrentSlide()
+    }
 
     function _createLightbox(){
       this.lightbox = new Lightbox(this.options.lightboxOpts)
@@ -55,6 +61,7 @@ define(function(require, exports, module) {
         })
 
         this.slides.push(slide)
+        slide.on('click', this.showNextSlide.bind(this))
       }
 
       this.showCurrentSlide()
