@@ -6,6 +6,10 @@ define(function(require, exports, module) {
   var AppView = require('views/AppView')
   var SlideData = require('data/SlideData')
 
+  // Used to generate 3D effect. Perspective is the pixel
+  // distance from the context plane.
+  mainContext.setPerspective(1000)
+
   // async call that will initialize app
   Utility.loadURL(SlideData.getUrl(), initApp)
 

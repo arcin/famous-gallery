@@ -33,10 +33,16 @@ define(function(require, exports, module) {
       size: [450, 500],
       urls: undefined,
       lightboxOpts: {
-        inTransform: Transform.translate(300, 0, 0),
-        outTransform: Transform.translate(-500, 0, 0),
-        inTransition: { duration: 500, curve: Easing.outBack },
-        outTransition: { duration: 350, curve: Easing.inQuad }
+        inTransform: Transform.rotateY(0.5),
+        inOpacity: 1,
+        inOrigin: [0, 0],
+        showOrigin: [0, 0],
+        outTransform: Transform.rotateY(-Math.PI/2),
+        outOpacity: 1,
+        outOrigin: [0, 0],
+        inTransition: { duration: 500, curve: 'linear' },
+        outTransition: { duration: 700, curve: 'linear' },
+        overlap: true
       }
     };
 
