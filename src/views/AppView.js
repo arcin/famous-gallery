@@ -14,14 +14,19 @@ define(function(require, exports, module) {
         View.apply(this, arguments)
 
         // Instantiate and mount slideshowView
-        var slideshowView = new SlideshowView()
+        var slideshowView = new SlideshowView({
+          urls: this.options.urls
+        })
+
         this.add(slideshowView)
     }
 
     AppView.prototype = Object.create(View.prototype)
     AppView.prototype.constructor = AppView
 
-    AppView.DEFAULT_OPTIONS = {}
+    AppView.DEFAULT_OPTIONS = {
+      urls: undefined
+    }
 
     module.exports = AppView
 });
