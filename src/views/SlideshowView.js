@@ -39,7 +39,7 @@ define(function(require, exports, module) {
         outOrigin: [0, 0],
         showOrigin: [0, 0],
         // Transform.thenMove() applies a transform and then a translation
-        inTransform: Transform.thenMove(Transform.rotateX(0.9), [0, -300, 0]),
+        inTransform: Transform.thenMove(Transform.rotateX(0.9), [0, -300, -300]),
         outTransform: Transform.thenMove(Transform.rotateZ(0.7), [0, window.innerHeight, -1000]),
         inTransition: { duration: 650, curve: 'easeOut' },
         outTransition: { duration: 500, curve: Easing.inCubic },

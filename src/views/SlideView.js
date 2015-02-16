@@ -76,7 +76,8 @@ define(function(require, exports, module) {
             // The size of this surface will be inherited
             // from a parent modifier
             backgroundColor: '#FFFFF5',
-            boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.5)'
+            boxShadow: '0 10px 20px -5px rgba(0, 0, 0, 0.5)',
+            cursor: 'pointer'
           }
         })
         this.mainNode.add(backgroundSurface)
