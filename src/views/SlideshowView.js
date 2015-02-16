@@ -48,12 +48,20 @@ define(function(require, exports, module) {
     };
 
     SlideshowView.prototype.showCurrentSlide = function(){
+      this.ready = false
+
       var slide = this.slides[this.currentIndex]
       this.lightbox.show(slide, function(){
+        // The slideshow is ready for another slide after the lighbox has
+        // finished showing the previous one
+        this.ready = true
         slide.fadeIn()
       }.bind(this))
     }
     SlideshowView.prototype.showNextSlide = function(){
+      // only show the next slide if the lightbox is ready to
+      if (!this.ready) return
+
       this.currentIndex++
       // cycles slides endlessly
       if (this.currentIndex === this.slides.length) this.currentIndex = 0
