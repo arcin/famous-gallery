@@ -25,12 +25,12 @@ define(function(require, exports, module) {
 
     AppView.DEFAULT_OPTIONS = {
       urls: undefined,
-      cameraWidth: 0.6 * window.innerHeight
+      cameraWidth: 0.5 * window.innerHeight
     }
 
     AppView.DEFAULT_OPTIONS.slideWidth = 0.8 * AppView.DEFAULT_OPTIONS.cameraWidth
     AppView.DEFAULT_OPTIONS.slideHeight = AppView.DEFAULT_OPTIONS.slideWidth + 40
-    AppView.DEFAULT_OPTIONS.slidePosition = 0.33 * AppView.DEFAULT_OPTIONS.cameraWidth
+    AppView.DEFAULT_OPTIONS.slidePosition = 0.77 * AppView.DEFAULT_OPTIONS.cameraWidth
 
     function _createCamera(){
       var camera = new ImageSurface({
@@ -62,7 +62,7 @@ define(function(require, exports, module) {
         origin: [0.5, 0],
         align: [0.5, 0],
         transform: Transform.translate(
-          -(this.options.slideWidth/2), this.options.slidePosition, 0
+          0, this.options.slidePosition, 0
         )
       })
 
@@ -74,7 +74,7 @@ define(function(require, exports, module) {
       this.add(slideshowModifier).add(slideshowContainer)
 
       slideshowContainer.add(slideshowView)
-      slideshowContainer.context.setPerspective(1000)
+      slideshowContainer.context.setPerspective(3000)
     }
 
     module.exports = AppView

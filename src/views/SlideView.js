@@ -24,6 +24,8 @@ define(function(require, exports, module) {
            * during instantiation and DEFAULT_OPTIONS
            * declared on this Type.
            */
+          align: [0.5, 0],
+          origin: [0.5, 0],
           size: this.options.size
         })
 
@@ -111,7 +113,7 @@ define(function(require, exports, module) {
         align: [0.5, 0],
         // usually a good idea to set z-depth and z-index for crossbrowser
         // support
-        transform: Transform.translate(0, this.options.filmBorder, 1)
+        transform: Transform.translate(0, this.options.filmBorder, 0.05)
       })
 
       this.mainNode.add(filmModifier).add(film)
